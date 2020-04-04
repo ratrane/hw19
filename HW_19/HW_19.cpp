@@ -1,73 +1,75 @@
-// HW_19.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
 
 using namespace std;
 
-class Animal
+class Animal                    //create main class
 {
+
+private:
+    string text;                //create string variable
 
 public:
 
-        virtual void voice()
+    
+        virtual void Voice()    //method, which display text from child class
         {
-            cout << "String with text";
+            cout << text;       //outout string variable
         };
 
 };
 
-class dog : public Animal 
+class Dog : public Animal    //create 1st child class   
 {
 
 public:
 
-    void voice() override
+    void Voice() override   //using method from main class and fill it
     {
-        cout << "Woof"<< endl;
+        string text = "Woof";   //set text for dog
+        cout << text<< endl;    //and output it
     }
 
 };
 
-class cat : public Animal
+class Cat : public Animal   //create 2nd child class  
 {
 
 public:
 
-    void voice() override
+    void Voice() override   //using method from main class and fill it
     {
-        cout << "Meow"<< endl;
+        string text = "Meow";   //set text for cat
+        cout << text<< endl;    //and output it
     }
 
 };
 
-class me : public Animal
+class Me : public Animal    //create 3rd child class  
 {
 
 public:
 
-    void voice() override
+    void Voice() override   //using method from main class and fill it
     {
-        cout << "Where is my beer?"<< endl;
+        string text = "Where is my beer?!";     //set text for me :-)
+        cout << text<< endl;                    //and output it
     }
 
 };
-
 
 int main()
 {
-    Animal* v1 = new dog();
-    Animal* v2 = new cat();
-    Animal* v3 = new me();
+    Animal* v1 = new Dog();  //creating pointer for method
+    Animal* v2 = new Cat();  //creating pointer for method
+    Animal* v3 = new Me();   //creating pointer for method
 
-    int i = 0;
+    
+    Animal* array[] = {v1, v2, v3}; //filling array 
 
-    for (int i = 0; i < 6; i++)
+    for (Animal* i:array)   //calling elements of array
     {
-        v1->voice();
-        v2->voice();
-        v3->voice();
-    }
+        i->Voice();         //dereference elements
+    };
 
 }
 
